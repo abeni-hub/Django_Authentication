@@ -1,0 +1,24 @@
+<!-- templates/items/item_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item List</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Items</h1>
+    <a href="{% url 'item_create' %}">Create New Item</a>
+    <ul>
+        {% for item in items %}
+            <li>
+                <a href="{% url 'item_detail' item.pk %}">{{ item.name }}</a>
+                <a href="{% url 'item_update' item.pk %}">Edit</a>
+                <a href="{% url 'item_delete' item.pk %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
